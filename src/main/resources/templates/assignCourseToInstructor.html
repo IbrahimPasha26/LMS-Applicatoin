@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Assign Course to Instructor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo.png" alt="Giga SEA LMS Logo" width="80" height="80" class="d-inline-block align-text-top">
+    </a>
+    <div class="mx-auto text-center">
+      <h1 class="navbar-text">Giga Sea LMS</h1>
+    </div>
+  </nav>
+</header>
+<main class="container">
+  <div class="form-container">
+    <h2>Assign Course to Instructor</h2>
+    <form id="assignCourseToInstructorForm" th:action="@{/addCourseToInstructor}" method="POST">
+      <!-- Instructor ID -->
+      <div class="form-group">
+        <label for="instructorId"><i class="fa fa-user"></i> Instructor ID</label>
+        <input type="text" id="instructorId" name="instructorId" required placeholder="Enter Instructor ID">
+      </div>
+
+      <!-- Course ID -->
+      <div class="form-group">
+        <label for="courseId"><i class="fa fa-book"></i> Course ID</label>
+        <select id="courseId" name="courseId" class="form-control">
+          <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.name}"></option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Assign Course</button>
+    </form>
+  </div>
+</main>
+<footer class="mt-5">
+  <p>Contact Information | Terms of Service | Privacy Policy</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlI/7BxM+XIkt8fbgJ6ubFjef2Nh4FOWzF4o0iUc3F86dIHNdT5M6g9yMAV" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWi8rqbaS2G7A4Cxby5xYj0JOso4mYSwqq0gFamkxpb8uu5quHf5rweHuF" crossorigin="anonymous"></script>
+</body>
+</html>
